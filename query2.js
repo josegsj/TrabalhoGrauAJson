@@ -2,19 +2,19 @@ use db2;
 db.getCollection("movies").aggregate(
     [
         { 
-            "$unwind" : "$genres"
+            $unwind : "$genres"
         }, 
         { 
-            "$group" : { 
-                "_id" : "$genres.name", 
-                "count" : { 
-                    "$sum" : 1.0
+            $group : { 
+                _id : "$genres.name", 
+                count : { 
+                    $sum : 1
                 }
             }
         }, 
         { 
-            "$sort" : { 
-                "count" : -1.0
+            $sort : { 
+                count : -1
             }
         }
     ]
