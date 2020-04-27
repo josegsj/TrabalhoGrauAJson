@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "genre": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "Action",
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Crime",
+            "Documentary",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "Foreign",
+            "History",
+            "Horror",
+            "Music",
+            "Mystery",
+            "Romance",
+            "Science Fiction",
+            "TV Movie",
+            "Thriller",
+            "War",
+            "Western"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "keyword": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "spoken_language": {
+      "type": "object",
+      "properties": {
+        "iso_639_1": {
+          "$ref": "#/definitions/iso_639_1"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "iso_639_1": {
+      "type": "string",
+      "enum": [
+        "af",
+        "am",
+        "ar",
+        "bg",
+        "bm",
+        "bn",
+        "bo",
+        "br",
+        "bs",
+        "ca",
+        "ce",
+        "cn",
+        "co",
+        "cs",
+        "cy",
+        "da",
+        "de",
+        "dz",
+        "el",
+        "en",
+        "eo",
+        "es",
+        "et",
+        "fa",
+        "fi",
+        "fr",
+        "ga",
+        "gd",
+        "gl",
+        "he",
+        "hi",
+        "hr",
+        "hu",
+        "hy",
+        "id",
+        "is",
+        "it",
+        "iu",
+        "ja",
+        "ka",
+        "kk",
+        "km",
+        "ko",
+        "ku",
+        "kw",
+        "ky",
+        "la",
+        "mi",
+        "ml",
+        "mn",
+        "nb",
+        "ne",
+        "nl",
+        "no",
+        "nv",
+        "ny",
+        "pa",
+        "pl",
+        "ps",
+        "pt",
+        "ro",
+        "ru",
+        "sa",
+        "sh",
+        "si",
+        "sk",
+        "sl",
+        "so",
+        "sq",
+        "sr",
+        "st",
+        "sv",
+        "sw",
+        "ta",
+        "te",
+        "th",
+        "tl",
+        "to",
+        "tr",
+        "uk",
+        "ur",
+        "vi",
+        "wo",
+        "xh",
+        "xx",
+        "yi",
+        "zh",
+        "zu"
+      ]
+    }
+  },
+  "title": "movies",
+  "description": "A movies database",
+  "type": "object",
+  "properties": {
+    "movies": {
+      "description": "Movie elements",
+      "type": "array",
+      "items": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "budget": {
+            "type": "integer"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/genre"
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/keyword"
+            }
+          },
+          "original_language": {
+            "$ref": "#/definitions/iso_639_1"
+          },
+          "original_title": {
+            "type": "string"
+          },
+          "popularity": {
+            "type": "number"
+          },
+          "release_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "revenue": {
+            "type": "integer"
+          },
+          "runtime": {
+            "type": "integer"
+          },
+          "spoken_languages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/spoken_language"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Post Production",
+              "Released",
+              "Rumored"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "vote_average": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 10.0
+          },
+          "vote_count": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
